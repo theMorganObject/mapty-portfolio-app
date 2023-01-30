@@ -58,6 +58,7 @@ class Cycling extends Workout {
 ////////////////////////////////////////
 // APPLICATION ARCHITECTURE
 const form = document.querySelector('.form');
+const resetBtn = document.querySelector('.reset__btn');
 const containerWorkouts = document.querySelector('.workouts');
 const inputType = document.querySelector('.form__input--type');
 const inputDistance = document.querySelector('.form__input--distance');
@@ -81,6 +82,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    resetBtn.addEventListener('click', this.reset);
   }
 
   _getPosition() {
@@ -297,6 +299,7 @@ class App {
   }
 
   reset() {
+    console.log('Workouts reset!');
     localStorage.removeItem('workouts');
     location.reload();
   }
