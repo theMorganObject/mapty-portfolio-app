@@ -1,5 +1,7 @@
 'use strict';
 
+console.log('continuous ONLINE');
+
 class Workout {
   date = new Date();
   id = (Date.now() + '').slice(-10);
@@ -82,7 +84,9 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
-    resetBtn.addEventListener('click', this.reset);
+    if (localStorage.getItem('workouts')) {
+      resetBtn.addEventListener('click', this.reset);
+    }
   }
 
   _getPosition() {
